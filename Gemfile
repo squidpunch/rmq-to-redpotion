@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'ruby_motion_query'
+gem 'redpotion'
 
 # Pretty printing
 #gem 'motion_print' 
