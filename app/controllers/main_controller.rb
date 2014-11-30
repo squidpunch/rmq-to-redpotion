@@ -1,4 +1,6 @@
-class MainController < UIViewController
+class MainController < PM::Screen
+  title 'Title Here'
+  stylesheet MainStylesheet
 
   def viewDidLoad
     super
@@ -6,17 +8,13 @@ class MainController < UIViewController
     # Sets a top of 0 to be below the navigation control, it's best not to do this
     # self.edgesForExtendedLayout = UIRectEdgeNone
 
-    rmq.stylesheet = MainStylesheet
     init_nav
-    rmq(self.view).apply_style :root_view
 
     # Create your UIViews here
-    @hello_world_label = rmq.append(UILabel, :hello_world).get
+    append!(UILabel, :hello_world)
   end
 
   def init_nav
-    self.title = 'Title Here'
-
     self.navigationItem.tap do |nav|
       nav.leftBarButtonItem = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemAction,
                                                                            target: self, action: :nav_left_button)
@@ -39,7 +37,7 @@ class MainController < UIViewController
   end
   def willAnimateRotationToInterfaceOrientation(orientation, duration: duration)
     # Called before rotation
-    rmq.all.reapply_styles
+    reapply_styles
   end
   def viewWillLayoutSubviews
     # Called anytime the frame changes, including rotation, and when the in-call status bar shows or hides
