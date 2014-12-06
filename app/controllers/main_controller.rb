@@ -2,9 +2,7 @@ class MainController < PM::Screen
   title 'Title Here'
   stylesheet MainStylesheet
 
-  def viewDidLoad
-    super
-
+  def on_load
     # Sets a top of 0 to be below the navigation control, it's best not to do this
     # self.edgesForExtendedLayout = UIRectEdgeNone
 
