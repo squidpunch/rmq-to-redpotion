@@ -24,7 +24,7 @@ class MainController < PM::Screen
   end
 
   def nav_left_button
-    puts 'Left button'
+    open NewController.new
   end
 
   def nav_right_button
