@@ -1,12 +1,64 @@
 class NewController < UIViewController
+  include ProMotion::ScreenModule
+
+  # This one we are going to do something like 'generic_screen' will do
+  title 'New Controller'
+  stylesheet NewControllerStylesheet
+
+  def self.new(args = {})
+    self.alloc.init.tap do |instance|
+      instance.screen_init(args) # Important for ProMotion stuff!
+    end
+  end
+
+  def on_load
+    append!(UILabel, :hello_world)
+    mp 'loading'
+  end
+
+  def loadView
+    self.respond_to?(:load_view) ? self.load_view : super
+  end
 
   def viewDidLoad
     super
+    self.view_did_load if self.respond_to?(:view_did_load)
+  end
 
-    rmq.stylesheet = NewControllerStylesheet
-    rmq(self.view).apply_style :root_view
+  def viewWillAppear(animated)
+    super
+    self.view_will_appear(animated) if self.respond_to?("view_will_appear:")
+  end
 
-    # Create your views here
+  def viewDidAppear(animated)
+    super
+    self.view_did_appear(animated) if self.respond_to?("view_did_appear:")
+  end
+
+  def viewWillDisappear(animated)
+    self.view_will_disappear(animated) if self.respond_to?("view_will_disappear:")
+    super
+  end
+
+  def viewDidDisappear(animated)
+    self.view_did_disappear(animated) if self.respond_to?("view_did_disappear:")
+    super
+  end
+
+  def shouldAutorotateToInterfaceOrientation(orientation)
+    self.should_rotate(orientation)
+  end
+
+  def shouldAutorotate
+    self.should_autorotate
+  end
+
+  def willRotateToInterfaceOrientation(orientation, duration:duration)
+    self.will_rotate(orientation, duration)
+  end
+
+  def didRotateFromInterfaceOrientation(orientation)
+    self.on_rotate
   end
 
   # Remove if you are only supporting portrait
