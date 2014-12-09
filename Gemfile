@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'rake'
 gem 'redpotion'
 
-gem 'bubble-wrap'
+gem 'bubble-wrap', require: %w[bubble-wrap/http bubble-wrap/media bubble-wrap/reactor]
+gem 'bubble-wrap-http'
 gem 'cdq'
 gem 'formotion', github: "clayallsopp/Formotion"
 gem 'motion-cocoapods'

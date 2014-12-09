@@ -10,4 +10,8 @@ class NewControllerStylesheet < ApplicationStylesheet
   def root_view(st)
     st.background_color = color.white
   end
+
+  def hello_world(st)
+
+  end
 end

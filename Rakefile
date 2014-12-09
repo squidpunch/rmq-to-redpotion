@@ -2,28 +2,11 @@
 $:.unshift('/Library/RubyMotion/lib')
 require 'motion/project/template/ios'
 require 'bundler'
-
-require 'motion-require'
-Motion::Require.all
-
 if ARGV.join(' ') =~ /spec/
   Bundler.require :default, :spec
 else
   Bundler.require
 end
-
-require 'motion-support'
-require 'motion-yaml'
-require 'ruby_motion_query'
-require 'bubble-wrap/http'
-require 'bubble-wrap/reactor'
-require 'bubble-wrap/media'
-require 'motion-config-vars'
-require 'motion-i18n'
-require 'motion-resource'
-require 'motion-testflight'
-require 'motion-stump'
-require 'formotion'
 
 Motion::Project::App.setup do |app|
   ENV['API_ENV'] ||= 'development'
