@@ -13,6 +13,7 @@ class NewControllerStylesheet < ApplicationStylesheet
   end
 
   def hello_world(st)
-
+    st.text = "from controller sytlesheeet"
+    st.size_to_fit
   end
 end

@@ -38,6 +38,8 @@ Motion::Project::App.setup do |app|
 
   app.files += Dir.glob(File.join(app.project_dir, 'lib/**/*.rb'))
 
+  app.files_dependencies 'app/stylesheets/new_controller_stylesheet.rb' => 'app/stylesheets/z_stylesheet.rb'
+  # app.files_dependencies 'app/stylesheets/z_stylesheet.rb' => 'app/stylesheets/new_controller_stylesheet.rb'
   # Use `rake config' to see complete project settings, here are some examples:
   #
   # app.fonts = ['Oswald-Regular.ttf', 'FontAwesome.otf'] # These go in /resources

@@ -13,7 +13,6 @@ class NewController < UIViewController
 
   def on_load
     append!(UILabel, :hello_world)
-    mp 'loading'
   end
 
   def loadView
